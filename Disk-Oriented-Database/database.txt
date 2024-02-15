@@ -1,0 +1,5 @@
+{"name":"Alice","country":"US","high score":110}
+{"name":"Jonathan","country":"US","high score":100}
+{"name":"Anita","country":"ES","high score":120}
+{"name":"Samantha","country":"US","high score":80}
+{"name":"Carlos","country":"ES","high score":90}
