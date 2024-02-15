@@ -24,9 +24,8 @@ class DiskOrientedDatabase {
     private const BUFFER_POOL_SIZE = 3;
     private string $db_file_path = 'database.txt';
 
-    public function __construct() {
-
-
+    public function __construct()
+    {
         # truncate DB everytime for test purposes
         file_put_contents($this->db_file_path, '');
     }
@@ -155,7 +154,7 @@ $db->read_where("name", "Jonathan");
 $db->read_where("name", "Alice");
 $db->read_where("name", "Anita");
 $db->read_where("name", "Samantha");
-$db->read_where("name", "Alice");
-$db->read_where("name", "Carlos");
-$records = $db->read_where("country", "US");
+$db->read_where("name", "Alice"); # should still be in buffer pool
+$db->read_where("name", "Carlos"); # carlos will replace Alice in buffer pool as she is the older entry
+$records = $db->read_where("country", "US"); # record #1 from buffer pool (samantha), record #2/#3 from disk as buffer is filled with ES
 pp($records, 1, "US Records");
